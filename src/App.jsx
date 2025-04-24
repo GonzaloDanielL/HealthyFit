@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from "react";
 import isotipo from './assets/isotipo.png'
 import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
@@ -10,12 +10,22 @@ import { Contacto } from './pages/contacto.jsx'
 import { Blog } from './pages/blog.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 50); // Cambia el número según cuándo quieras que cambie
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       <header className="contenedor-header">
-        <nav className='contenedor-navegacion'>
+        <nav className={`contenedor-navegacion ${scrolled ? "contenedor-navegacion-2" : ""}`}>
           <div className='navegacion-logo'>
             <img src={isotipo} alt="Healthyfit" />
             <h1>Healthy</h1><h1>Fit</h1>
