@@ -21,6 +21,13 @@ import carolinaMendez from "../assets/carolina-mendez.png";
 import sofiaTorres from "../assets/sofia-torres.png";
 
 
+import form1 from "../assets/formimg-1.jpg";
+import form2 from "../assets/formimg-2.jpg";  
+import form3 from "../assets/formimg-3.jpg";
+import form4 from "../assets/formimg-4.jpg";
+import form5 from "../assets/formimg-5.jpg";
+
+
 import { useState, useEffect, useRef } from 'react';
 
 import CarouselClientes from '../components/carouselClientes.jsx';
@@ -304,6 +311,34 @@ export function Inicio() {
           showIndicators={true}
           className="testimonials-carousel"
         />
+
+      </section>
+
+      <section className="sub-seccion-inicio i5">
+
+        <form className="i5-sub-1">
+          <h3 className="titulo-1">Formulario de Contacto</h3>
+          <fieldset>
+            <label htmlFor="">Nombre</label>
+            <input type="text" />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="">Correo electrónico</label>
+            <input type="text" />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="">N° telefono</label>
+            <input type="text" />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="">Descripción</label>
+            <textarea name="" id=""></textarea>
+          </fieldset>
+          <button>Enviar</button>
+        </form>
+        <div className="i5-sub-2">
+          <img src={form1} alt="img-sección-inicio-formulario" />
+        </div>
 
       </section>
     </section>
