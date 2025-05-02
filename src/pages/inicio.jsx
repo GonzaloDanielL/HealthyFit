@@ -3,30 +3,15 @@ import entrenamiento from "../assets/entrenamiento-personalizado.jpg";
 import nutricion from "../assets/nutricion.jpg";
 import binestar from "../assets/binestar.jpg";
 
-import danielRuiz from "../assets/daniel-ruiz.png";
-import valeriaGomez from "../assets/valeria-gomez.png";
-import CamilaOrtega from "../assets/camila-ortega.png";
-import javierParedes from "../assets/javier-paredes.png";
-import luciaHerrera from "../assets/lucia-herrera.png";
-import martinSalas from "../assets/martin-salas.png";
-
-import carlosRamirez from "../assets/carlos-ramirez.png";
-import lauraFernandez from "../assets/laura-fernandez.png";
-import jorgeMedina from "../assets/jorge-medina.png";
-import mariaSoto from "../assets/maria-soto.png";
-import andresTorres from "../assets/andres-torres.png";
-import luisNavarro from "../assets/luis-navarro.png";
-import anaRivas from "../assets/ana-rivas.png";
-import carolinaMendez from "../assets/carolina-mendez.png";
-import sofiaTorres from "../assets/sofia-torres.png";
-
-
 import form1 from "../assets/formimg-1.jpg";
-import form2 from "../assets/formimg-2.jpg";  
+import form2 from "../assets/formimg-2.jpg";
 import form3 from "../assets/formimg-3.jpg";
 import form4 from "../assets/formimg-4.jpg";
 import form5 from "../assets/formimg-5.jpg";
 
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { AiFillTikTok } from "react-icons/ai";
 
 import { useState, useEffect, useRef } from 'react';
 
@@ -35,120 +20,28 @@ import '../styles/carouselClientes.css'
 
 import Carousel from '../components/carousel.jsx';
 
+import { useLocation } from "react-router-dom";
+
+import datos from '../data/datos.json'
+
 export function Inicio() {
+  const location = useLocation();
 
-  const specialists = [
-    {
-      id: 1,
-      name: 'Daniel Ruiz',
-      title: 'Entrenamiento Personalizado',
-      description: 'Entrenador certificado con más de 8 años de experiencia en planes personalizados para fuerza, resistencia y tonificación. Apasionado por ayudar a cada persona a alcanzar su mejor versión.',
-      image: danielRuiz
-    },
-    {
-      id: 2,
-      name: 'Valeria Gómez',
-      title: 'Nutrición',
-      description: 'Nutricionista especializada en nutrición deportiva y pérdida de peso. Crea planes alimenticios adaptados a tus objetivos, estilo de vida y necesidades metabólicas.',
-      image: valeriaGomez
-    },
-    {
-      id: 3,
-      name: 'Lucía Herrera',
-      title: 'Bienestar Integral',
-      description: 'Coach de bienestar enfocada en mindfulness y autocuidado. Promueve hábitos saludables para cuerpo y mente a través de sesiones personalizadas y prácticas de relajación.',
-      image: luciaHerrera
-    },
-    {
-      id: 4,
-      name: 'Javier Paredes',
-      title: 'Acondicionamiento Físico General',
-      description: 'Especialista en entrenamiento funcional y movilidad. Ideal para quienes buscan mantenerse activos, mejorar su postura y prevenir lesiones.',
-      image: javierParedes
-    },
-    {
-      id: 5,
-      name: 'Camila Ortega',
-      title: 'Evaluación Física y Nutricional',
-      description: 'Profesional en ciencias del deporte que realiza diagnósticos físicos y evaluaciones nutricionales para establecer objetivos realistas y medibles desde el primer día.',
-      image: CamilaOrtega
-    },
-    {
-      id: 6,
-      name: 'Martín Salas',
-      title: 'Seguimiento Virtual',
-      description: 'Entrenador online con amplia experiencia en asesorías remotas. Te acompaña paso a paso mediante plataformas digitales para que logres tus metas desde cualquier lugar.',
-      image: martinSalas
-    }
-  ];
+  const specialists = datos.especialistas.map(item => ({
+    id: item.id,
+    name: item.nombre,
+    title: item.especialidad,
+    description: item.descripcion,
+    image: item.imagen
+  }))
 
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Carlos Ramírez',
-      role: 'Ingeniero de Sistemas',
-      text: '"Antes me costaba mucho mantener una rutina por mi trabajo sedentario. Gracias a HealthyFit logré mejorar mi condición física y ahora me siento con más energía todos los días."',
-      avatar: carlosRamirez
-    },
-    {
-      id: 2,
-      name: 'Laura Fernández',
-      role: 'Diseñadora Gráfica',
-      text: '"Me encantó la asesoría nutricional, el plan que me dieron se adapta perfecto a mi estilo de vida. Además, el equipo es súper profesional y siempre están atentos a tu progreso."',
-      avatar: lauraFernandez
-    },
-    {
-      id: 3,
-      name: 'Jorge Medina',
-      role: 'Profesor de Educación Física',
-      text: '"Conozco muchos programas de entrenamiento, pero HealthyFit realmente me sorprendió. Su enfoque integral y personalizado marca la diferencia. ¡Totalmente recomendado!"',
-      avatar: jorgeMedina
-    },
-    {
-      id: 4,
-      name: 'María Soto',
-      role: 'Administradora',
-      text: '"Llevaba años intentando bajar de peso sin éxito. En HealthyFit encontré un equipo que me motivó, me guió y me hizo sentir acompañada en todo momento. Hoy me siento más feliz y segura de mí misma."',
-      avatar: mariaSoto
-    },
-    {
-      id: 5,
-      name: 'Andrés Torres',
-      role: 'Fotógrafo',
-      text: '"El ambiente en HealthyFit es increíble. Las rutinas están bien pensadas y el seguimiento constante me ayudó a mantenerme disciplinado. Ahora tengo más energía para mi día a día."',
-      avatar: andresTorres
-    },
-    {
-      id: 6,
-      name: 'Luis Navarro',
-      role: 'Estudiante universitario',
-      text: '"Gracias a HealthyFit, logré organizarme mejor con mis estudios y mi salud. Las rutinas y el plan nutricional fueron claves para mejorar mi rendimiento físico y académico."',
-      avatar: luisNavarro
-    },
-
-    {
-      id: 7,
-      name: 'Ana Rivas',
-      role: 'Chef',
-      text: '"Mi trabajo exige muchas horas de pie y estrés. En HealthyFit encontré un espacio para desconectarme, fortalecerme y recuperar el equilibrio que tanto necesitaba. ¡Estoy encantada!"',
-      avatar: anaRivas
-    },
-    {
-      id: 8,
-      name: 'Carolina Méndez',
-      role: 'Enfermera',
-      text: '"Me gustó mucho cómo combinan el entrenamiento con el bienestar mental. No solo trabajas el cuerpo, también aprendes a cuidar tu mente. ¡Eso no lo encuentras en cualquier lugar!"',
-      avatar: carolinaMendez
-    },
-    {
-      id: 9,
-      name: 'Sofía Torres',
-      role: 'Médico',
-      text: '"Como profesional de la salud, valoro enormemente el enfoque científico y basado en evidencia que ofrece HealthyFit. Los resultados hablan por sí solos."',
-      avatar: sofiaTorres
-    }
-
-  ];
+  const testimonials = datos.clientes.map(item => ({
+    id: item.id,
+    name: item.nombre,
+    role: item.ocupacion,
+    text: item.testimonio,
+    avatar: item.imagen
+  }))
 
   // Estado para el número de elementos por slide (responsive)
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
@@ -172,6 +65,19 @@ export function Inicio() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100); // pequeño retraso para asegurar que el DOM esté cargado
+      }
+    }
+  }, [location]);
 
   const renderSpecialist = (specialist, index) => (
     <div className="specialist-card" key={specialist.id || index}>
@@ -222,7 +128,9 @@ export function Inicio() {
             </p>
           </div>
           <div>
-            <button className="btn btn-rojo">Contacto</button>
+            <a href="https://web.facebook.com/" target="_blank"><FaFacebookSquare /></a>
+            <a href="https://www.instagram.com/" target="_blank"><FaSquareInstagram /></a>
+            <a href="https://www.tiktok.com/en" target="_blank"><AiFillTikTok /></a>
           </div>
         </div>
         <div className="i1-sub-2">
@@ -314,7 +222,7 @@ export function Inicio() {
 
       </section>
 
-      <section className="sub-seccion-inicio i5">
+      <section className="sub-seccion-inicio i5" id="contacto">
 
         <form className="i5-sub-1">
           <h3 className="titulo-1">Formulario de Contacto</h3>
