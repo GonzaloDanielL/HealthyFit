@@ -1,13 +1,13 @@
-import imagen1 from "../assets/hombre-1.png";
-import entrenamiento from "../assets/entrenamiento-personalizado.jpg";
-import nutricion from "../assets/nutricion.jpg";
-import binestar from "../assets/binestar.jpg";
+import imagen1 from "/hombre-1.png";
+import entrenamiento from "/entrenamiento-personalizado.jpg";
+import nutricion from "/nutricion.jpg";
+import binestar from "/binestar.jpg";
 
-import form1 from "../assets/formimg-1.jpg";
-import form2 from "../assets/formimg-2.jpg";
-import form3 from "../assets/formimg-3.jpg";
-import form4 from "../assets/formimg-4.jpg";
-import form5 from "../assets/formimg-5.jpg";
+import form1 from "/formimg-1.jpg";
+import form2 from "/formimg-2.jpg";
+import form3 from "/formimg-3.jpg";
+import form4 from "/formimg-4.jpg";
+import form5 from "/formimg-5.jpg";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";

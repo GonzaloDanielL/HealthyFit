@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import isotipo from './assets/isotipo.png'
+import isotipo from '/isotipo.png'
 import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      setScrolled(offset > 50); // Cambia el número según cuándo quieras que cambie
+      setScrolled(offset > 50);
     };
 
     window.addEventListener("scroll", handleScroll);

@@ -1,8 +1,8 @@
-import about from "../assets/about.jpg";
-import compromiso from "../assets/compromiso.png";
-import salud from "../assets/salud.png";
-import personalizacion from "../assets/personalizacion.png";
-import innovacion from "../assets/innovacion.png";
+import about from "/about.jpg";
+import compromiso from "/compromiso.png";
+import salud from "/salud.png";
+import personalizacion from "/personalizacion.png";
+import innovacion from "/innovacion.png";
 
 export function About() {
     return (

@@ -1,4 +1,3 @@
-import blog1 from "../assets/blog-1.jpg";
 import datos from '../data/datos.json'
 
 import { BlogItem } from '../components/blogItem.jsx'

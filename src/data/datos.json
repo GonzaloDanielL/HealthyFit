@@ -3,7 +3,7 @@
         {
             "id": 1,
             "nombre": "Carlos Ramírez",
-            "imagen": "src/assets/carlos-ramirez.png",
+            "imagen": "/carlos-ramirez.png",
             "ocupacion": "Ingeniero de Sistemas",
             "email": "carlos.ramirez@gmail.com",
             "testimonio": "\"Antes me costaba mucho mantener una rutina por mi trabajo sedentario. Gracias a HealthyFit logré mejorar mi condición física y ahora me siento con más energía todos los días.\"",
@@ -13,7 +13,7 @@
         {
             "id": 2,
             "nombre": "Laura Fernández",
-            "imagen": "src/assets/laura-fernandez.png",
+            "imagen": "/laura-fernandez.png",
             "ocupacion": "Diseñadora Gráfica",
             "email": "laura.fernandez@gmail.com",
             "testimonio": "\"Me encantó la asesoría nutricional, el plan que me dieron se adapta perfecto a mi estilo de vida. Además, el equipo es súper profesional y siempre están atentos a tu progreso.\"",
@@ -23,7 +23,7 @@
         {
             "id": 3,
             "nombre": "Jorge Medina",
-            "imagen": "src/assets/jorge-medina.png",
+            "imagen": "/jorge-medina.png",
             "ocupacion": "Profesor de Educación Física",
             "email": "jorge.medina@gmail.com",
             "testimonio": "\"Conozco muchos programas de entrenamiento, pero HealthyFit realmente me sorprendió. Su enfoque integral y personalizado marca la diferencia. ¡Totalmente recomendado!\"",
@@ -33,7 +33,7 @@
         {
             "id": 4,
             "nombre": "María Soto",
-            "imagen": "src/assets/maria-soto.png",
+            "imagen": "/maria-soto.png",
             "ocupacion": "Administradora",
             "email": "maria.soto@gmail.com",
             "testimonio": "\"Llevaba años intentando bajar de peso sin éxito. En HealthyFit encontré un equipo que me motivó, me guió y me hizo sentir acompañada en todo momento. Hoy me siento más feliz y segura de mí misma.\"",
@@ -43,7 +43,7 @@
         {
             "id": 5,
             "nombre": "Andrés Torres",
-            "imagen": "src/assets/andres-torres.png",
+            "imagen": "/andres-torres.png",
             "ocupacion": "Fotógrafo",
             "email": "andres.torres@gmail.com",
             "testimonio": "\"El ambiente en HealthyFit es increíble. Las rutinas están bien pensadas y el seguimiento constante me ayudó a mantenerme disciplinado. Ahora tengo más energía para mi día a día.\"",
@@ -53,7 +53,7 @@
         {
             "id": 6,
             "nombre": "Luis Navarro",
-            "imagen": "src/assets/luis-navarro.png",
+            "imagen": "/luis-navarro.png",
             "ocupacion": "Estudiante universitario",
             "email": "luis.navarro@gmail.com",
             "testimonio": "\"Gracias a HealthyFit, logré organizarme mejor con mis estudios y mi salud. Las rutinas y el plan nutricional fueron claves para mejorar mi rendimiento físico y académico.\"",
@@ -63,7 +63,7 @@
         {
             "id": 7,
             "nombre": "Ana Rivas",
-            "imagen": "src/assets/ana-rivas.png",
+            "imagen": "/ana-rivas.png",
             "ocupacion": "Chef",
             "email": "ana.rivas@gmail.com",
             "testimonio": "\"Mi trabajo exige muchas horas de pie y estrés. En HealthyFit encontré un espacio para desconectarme, fortalecerme y recuperar el equilibrio que tanto necesitaba. ¡Estoy encantada!\"",
@@ -73,7 +73,7 @@
         {
             "id": 8,
             "nombre": "Carolina Méndez",
-            "imagen": "src/assets/carolina-mendez.png",
+            "imagen": "/carolina-mendez.png",
             "ocupacion": "Enfermera",
             "email": "carolina.mendez@gmail.com",
             "testimonio": "\"Me gustó mucho cómo combinan el entrenamiento con el bienestar mental. No solo trabajas el cuerpo, también aprendes a cuidar tu mente. ¡Eso no lo encuentras en cualquier lugar!\"",
@@ -83,7 +83,7 @@
         {
             "id": 9,
             "nombre": "Sofía Torres",
-            "imagen": "src/assets/sofia-torres.png",
+            "imagen": "/sofia-torres.png",
             "ocupacion": "Médico",
             "email": "sofia.torres@gmail.com",
             "testimonio": "\"Como profesional de la salud, valoro enormemente el enfoque científico y basado en evidencia que ofrece HealthyFit. Los resultados hablan por sí solos.\"",
@@ -95,7 +95,7 @@
         {
             "id": 1,
             "nombre": "Daniel Ruiz",
-            "imagen": "src/assets/daniel-ruiz.png",
+            "imagen": "/daniel-ruiz.png",
             "especialidad": "Entrenamiento Personalizado",
             "descripcion": "Entrenador certificado con más de 8 años de experiencia en planes personalizados para fuerza, resistencia y tonificación. Apasionado por ayudar a cada persona a alcanzar su mejor versión.",
             "email": "daniel.ruiz@gmail.com",
@@ -105,7 +105,7 @@
         {
             "id": 2,
             "nombre": "Valeria Gómez",
-            "imagen": "src/assets/valeria-gomez.png",
+            "imagen": "/valeria-gomez.png",
             "especialidad": "Nutrición",
             "descripcion": "Nutricionista especializada en nutrición deportiva y pérdida de peso. Crea planes alimenticios adaptados a tus objetivos, estilo de vida y necesidades metabólicas.",
             "email": "valeria.gomez@gmail.com",
@@ -115,7 +115,7 @@
         {
             "id": 3,
             "nombre": "Lucía Herrera",
-            "imagen": "src/assets/lucia-herrera.png",
+            "imagen": "/lucia-herrera.png",
             "especialidad": "Bienestar Integral",
             "descripcion": "Coach de bienestar enfocada en mindfulness y autocuidado. Promueve hábitos saludables para cuerpo y mente a través de sesiones personalizadas y prácticas de relajación.",
             "email": "lucia.herrera@gmail.com",
@@ -125,7 +125,7 @@
         {
             "id": 4,
             "nombre": "Javier Paredes",
-            "imagen": "src/assets/javier-paredes.png",
+            "imagen": "/javier-paredes.png",
             "especialidad": "Acondicionamiento Físico General",
             "descripcion": "Especialista en entrenamiento funcional y movilidad. Ideal para quienes buscan mantenerse activos, mejorar su postura y prevenir lesiones.",
             "email": "javier.paredes@gmail.com",
@@ -135,7 +135,7 @@
         {
             "id": 5,
             "nombre": "Camila Ortega",
-            "imagen": "src/assets/camila-ortega.png",
+            "imagen": "/camila-ortega.png",
             "especialidad": "Evaluación Física y Nutricional",
             "descripcion": "Profesional en ciencias del deporte que realiza diagnósticos físicos y evaluaciones nutricionales para establecer objetivos realistas y medibles desde el primer día.",
             "email": "camila.ortega@gmail.com",
@@ -145,7 +145,7 @@
         {
             "id": 6,
             "nombre": "Martín Salas",
-            "imagen": "src/assets/martin-salas.png",
+            "imagen": "/martin-salas.png",
             "especialidad": "Seguimiento Virtual",
             "descripcion": "Entrenador online con amplia experiencia en asesorías remotas. Te acompaña paso a paso mediante plataformas digitales para que logres tus metas desde cualquier lugar.",
             "email": "martin.salas@gmail.com",
@@ -158,42 +158,42 @@
             "id": 1,
             "nombre": "Entrenamiento Personalizado",
             "descripcion": "Planes de entrenamiento diseñados a medida según tus objetivos y condición física. Ya sea para perder peso, ganar masa muscular o mejorar tu resistencia, contarás con la guía de un entrenador profesional.",
-            "imagen": "src/assets/entrenamiento-personalizado.jpg",
+            "imagen": "/entrenamiento-personalizado.jpg",
             "profesional": "Daniel Ruiz"
         },
         {
             "id": 2,
             "nombre": "Nutrición",
             "descripcion": "Asesoramiento nutricional completo para mejorar tus hábitos alimenticios, alcanzar tus metas y mantener un estilo de vida saludable. Incluye planes de alimentación personalizados y seguimiento continuo.",
-            "imagen": "src/assets/nutricion.jpg",
+            "imagen": "/nutricion.jpg",
             "profesional": "Valeria Gómez"
         },
         {
             "id": 3,
             "nombre": "Bienestar integral",
             "descripcion": "Sesiones enfocadas en el equilibrio entre cuerpo y mente, combinando prácticas como meditación, mindfulness y rutinas de autocuidado para mejorar tu calidad de vida.",
-            "imagen": "src/assets/binestar.jpg",
+            "imagen": "/binestar.jpg",
             "profesional": "Lucía Herrera"
         },
         {
             "id": 4,
             "nombre": "Acondicionamiento físico",
             "descripcion": "Rutinas grupales o individuales que trabajan fuerza, resistencia y movilidad. Ideal para quienes desean mantenerse activos, mejorar su estado físico y prevenir lesiones.",
-            "imagen": "src/assets/acondicionamiento-fisico.jpg",
+            "imagen": "/acondicionamiento-fisico.jpg",
             "profesional": "Javier Paredes"
         },
         {
             "id": 5,
             "nombre": "Seguimiento virtual",
             "descripcion": "Acompañamiento remoto mediante una plataforma online, donde podrás acceder a tus rutinas, planes de comida, consejos, y contactar con tu entrenador o nutricionista en tiempo real.",
-            "imagen": "src/assets/seguimiento-vitual.jpg",
+            "imagen": "/seguimiento-vitual.jpg",
             "profesional": "Martín Salas"
         },
         {
             "id": 6,
             "nombre": "Evaluación física",
             "descripcion": "Diagnóstico inicial que incluye pruebas físicas básicas y análisis nutricional para establecer tu punto de partida y adaptar el plan ideal para ti.",
-            "imagen": "src/assets/evaluacion-fisica.jpg",
+            "imagen": "/evaluacion-fisica.jpg",
             "profesional": "Camila Ortega"
         }
     ],
@@ -203,63 +203,63 @@
             "titulo": "5 hábitos saludables para comenzar tu día con energía",
             "fecha": "2025-03-15",
             "resumen": "Conoce rutinas simples que puedes adoptar en tus mañanas para sentirte con más energía y mejorar tu bienestar general.",
-            "imagen": "src/assets/habitos-saludables.jpg"
+            "imagen": "/habitos-saludables.jpg"
         },
         {
             "id": 2,
             "titulo": "Guía básica para una alimentación balanceada",
             "fecha": "2025-03-10",
             "resumen": "Aprende a estructurar tus comidas diarias para cubrir tus necesidades nutricionales sin complicarte.",
-            "imagen": "src/assets/alimentacion-balanceada.jpg"
+            "imagen": "/alimentacion-balanceada.jpg"
         },
         {
             "id": 3,
             "titulo": "¿Por qué el entrenamiento funcional es tan efectivo?",
             "fecha": "2025-02-28",
             "resumen": "Descubre los beneficios del entrenamiento funcional y cómo puede ayudarte a mejorar tu rendimiento físico en la vida diaria.",
-            "imagen": "src/assets/entrenamiento-funcional.jpg"
+            "imagen": "/entrenamiento-funcional.jpg"
         },
         {
             "id": 4,
             "titulo": "Alimentos que aumentan tu energía de forma natural",
             "fecha": "2025-03-18",
             "resumen": "Explora una lista de alimentos ricos en nutrientes que te ayudarán a mantenerte activo y con energía durante el día.",
-            "imagen": "src/assets/alimentos-energia.jpg"
+            "imagen": "/alimentos-energia.jpg"
         },
         {
             "id": 5,
             "titulo": "Beneficios del yoga para la salud mental y física",
             "fecha": "2025-03-05",
             "resumen": "El yoga no solo mejora tu flexibilidad, también reduce el estrés y promueve el equilibrio emocional. Conoce cómo empezar.",
-            "imagen": "src/assets/beneficios-yoga.jpg"
+            "imagen": "/beneficios-yoga.jpg"
         },
         {
             "id": 6,
             "titulo": "Errores comunes al empezar a entrenar y cómo evitarlos",
             "fecha": "2025-03-01",
             "resumen": "Evita lesiones y frustraciones aprendiendo qué no hacer al comenzar tu rutina de ejercicios.",
-            "imagen": "src/assets/errores-entrenamiento.jpg"
+            "imagen": "/errores-entrenamiento.jpg"
         },
         {
             "id": 7,
             "titulo": "Cómo armar un plan de comidas semanal saludable",
             "fecha": "2025-02-20",
             "resumen": "Te mostramos paso a paso cómo organizar tus comidas para tener una semana equilibrada y sin complicaciones.",
-            "imagen": "src/assets/plan-semanal.jpg"
+            "imagen": "/plan-semanal.jpg"
         },
         {
             "id": 8,
             "titulo": "La importancia del descanso en tu rendimiento físico",
             "fecha": "2025-02-17",
             "resumen": "Dormir bien y descansar adecuadamente es tan importante como entrenar. Descubre por qué.",
-            "imagen": "src/assets/descanso-rendimiento.jpg"
+            "imagen": "/descanso-rendimiento.jpg"
         },
         {
             "id": 9,
             "titulo": "Rutina express para entrenar en casa en 20 minutos",
             "fecha": "2025-02-12",
             "resumen": "¿Sin tiempo para ir al gimnasio? Te dejamos una rutina rápida y efectiva para hacer en casa sin equipo.",
-            "imagen": "src/assets/rutina-casa.jpg"
+            "imagen": "/rutina-casa.jpg"
         }
     ]
 }
