@@ -216,10 +216,12 @@ main {
   display: flex;
   flex-direction: row;
   /*     background: linear-gradient(149deg,rgba(0, 0, 0, 0) 0%, rgba(66, 47, 47, 0.27) 50%, rgba(209, 0, 0, 1) 100%); */
-  background: linear-gradient(150deg,
-      rgba(17, 17, 17, 0) 0%,
-      rgba(0, 0, 0, 0.27) 37%,
-      rgba(133, 0, 0, 1) 100%);
+  background: linear-gradient(
+    150deg,
+    rgba(17, 17, 17, 0) 0%,
+    rgba(0, 0, 0, 0.27) 37%,
+    rgba(133, 0, 0, 1) 100%
+  );
 
   & .i1-sub-1 {
     flex: 70%;
@@ -325,15 +327,12 @@ main {
   justify-content: center;
 
   & .i2-sub-2 {
-    display: grid;
-    gap: 6rem;
     padding-left: 5rem;
     padding-right: 5rem;
-
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
-    width: 100%;
-    grid-auto-flow: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Espacio uniforme entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
 
     & div {
       border-radius: 10px;
@@ -344,6 +343,9 @@ main {
       border-radius: 10px;
       background-color: var(--var-fondo-principal);
       padding: 20px;
+
+      flex: 1 1 300px; /* Se adaptan desde 300px hasta ocupar el espacio disponible */
+      max-width: 350px;
 
       & img {
         border-radius: 10px;
@@ -513,7 +515,14 @@ main {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /*       display: none;
+      opacity: 0; */
     }
+
+    /*     & img:nth-child(1) {
+      display: block;
+      opacity: 1;
+    } */
   }
 }
 
@@ -649,7 +658,6 @@ main {
         transform: translateY(20px);
         transition: all 0.4s ease;
       }
-
     }
 
     & img {
@@ -696,7 +704,6 @@ main {
       width: 60%;
       text-align: center;
     }
-
   }
 
   & .s3-sub-2 {
@@ -717,7 +724,6 @@ main {
       height: 100%;
       background-color: var(--var-fondo-segundario);
       padding: 20px;
-
 
       & img {
         max-width: 35%;
@@ -754,7 +760,6 @@ main {
     }
   }
 }
-
 
 /* --------------- blog --------------- */
 
@@ -857,7 +862,6 @@ main {
   }
 }
 
-
 /** -------------- about --------------- */
 .about {
   display: flex;
@@ -883,7 +887,6 @@ main {
     border-radius: 10px;
   }
 
-
   & div {
     display: flex;
     flex-direction: column;
@@ -907,9 +910,7 @@ main {
       line-height: 1.7;
       margin-bottom: 20px;
     }
-
   }
-
 }
 
 .a2 {
@@ -982,7 +983,7 @@ main {
   gap: 70px;
 }
 
-.f1{
+.f1 {
   display: flex;
   flex-direction: column;
 
@@ -1058,7 +1059,9 @@ main {
   }
 }
 
-.f2, .f3, .f4 {
+.f2,
+.f3,
+.f4 {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1250,7 +1253,42 @@ main {
   }
 }
 
-@media (width >=1600px) {
+/* adaptación a monitores y laptops */
+@media (width >= 1900px) {
+  .sub-seccion-inicio {
+    height: 900px;
+  }
+
+  .i1 {
+        padding-top: 150px;
+    padding-bottom: 60px;
+    .i1-sub-1 {
+      justify-content: center;
+
+      & div {
+        & h2 {
+          font-size: 6.5rem;
+          line-height: 0.9;
+
+          & .grande-gris,
+          .grande-rojo {
+            font-size: 12rem;
+          }
+        }
+
+        & p {
+          font-weight: 500;
+          font-size: 1.2rem;
+          width: 60%;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1700px) {
   .i1 {
     padding-top: 150px;
 
@@ -1272,48 +1310,170 @@ main {
           width: 60%;
           line-height: 1.6;
           margin-bottom: 20px;
-
-          & span {
-            color: var(--var-color-principal);
-          }
         }
       }
     }
   }
 }
 
-/* adaptación a monitores y laptops */
-@media (width >=1900px) {
+@media (max-width: 1560px) {
   .sub-seccion-inicio {
-    height: 900px;
+    height: auto;
   }
 
   .i1 {
-    .i1-sub-1 {
-      justify-content: center;
-
+    & .i1-sub-1 {
       & div {
         & h2 {
-          font-size: 6.5rem;
+          font-size: 5rem;
           line-height: 0.9;
 
           & .grande-gris,
           .grande-rojo {
-            font-size: 12rem;
+            font-size: 8rem;
           }
         }
 
         & p {
           font-weight: 500;
-          font-size: 1.2rem;
+          font-size: 1rem;
           width: 60%;
           line-height: 1.6;
           margin-bottom: 20px;
+        }
+      }
+    }
 
-          & span {
-            color: var(--var-color-principal);
+    & .i1-sub-2 {
+      & img {
+        width: 250%;
+        right: -220px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1335px) {
+  .i1 {
+    & .i1-sub-1 {
+      & div {
+        & h2 {
+          font-size: 4rem;
+          line-height: 0.9;
+
+          & .grande-gris,
+          .grande-rojo {
+            font-size: 7rem;
           }
         }
+
+        & p {
+          font-weight: 500;
+          font-size: 1rem;
+          width: 60%;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    & .i1-sub-2 {
+      & img {
+        width: 250%;
+        right: -180px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1125px) {
+  .i1 {
+    padding-top: 150px;
+    padding-bottom: 60px;
+    & .i1-sub-1 {
+      flex: 60%;
+      & div {
+        & h2 {
+          font-size: 3rem;
+          line-height: 0.9;
+
+          & .grande-gris,
+          .grande-rojo {
+            font-size: 6rem;
+          }
+        }
+
+        & p {
+          font-weight: 500;
+          font-size: 1rem;
+          width: 60%;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+      }
+
+      & div:last-child {
+        & a {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    & .i1-sub-2 {
+      flex: 40%;
+
+      & img {
+        width: 220%;
+        right: -180px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .i1 {
+    padding-top: 150px;
+    padding-bottom: 60px;
+    flex-direction: column;
+    align-items: center;
+
+    & .i1-sub-1 {
+      flex: 100%;
+
+      & div {
+        & h2 {
+          font-size: 3rem;
+          line-height: 0.9;
+
+          & .grande-gris,
+          .grande-rojo {
+            font-size: 6rem;
+          }
+        }
+
+        & p {
+          font-weight: 500;
+          font-size: 1rem;
+          width: 100%;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+      }
+
+      & div:last-child {
+        & a {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    & .i1-sub-2 {
+      flex: 40%;
+      display: none;
+
+      & img {
+        width: 220%;
+        right: -180px;
       }
     }
   }

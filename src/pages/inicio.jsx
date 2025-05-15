@@ -24,8 +24,14 @@ import { useLocation } from "react-router-dom";
 
 import datos from '../data/datos.json'
 
+
+
 export function Inicio() {
   const location = useLocation();
+
+  const formImgs = [form1, form2, form3, form4, form5];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const specialists = datos.especialistas.map(item => ({
     id: item.id,
@@ -45,6 +51,7 @@ export function Inicio() {
 
   // Estado para el número de elementos por slide (responsive)
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
+  const [contadorImg, setContadorImf] = useState(0)
 
   // Ajustar el número de testimonios por slide según el tamaño de pantalla
   useEffect(() => {
@@ -79,6 +86,7 @@ export function Inicio() {
     }
   }, [location]);
 
+
   const renderSpecialist = (specialist, index) => (
     <div className="specialist-card" key={specialist.id || index}>
       <img src={specialist.image} alt={specialist.name} />
@@ -103,6 +111,14 @@ export function Inicio() {
     </div>
   );
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % formImgs.length);
+    }, 5000); // 5 segundos
+
+    return () => clearInterval(interval); // limpiar al desmontar
+  }, []);
+
   return (
     <section className="sub-contenedor-principal inicio">
       <section className="sub-seccion-inicio i1">
@@ -112,7 +128,6 @@ export function Inicio() {
               <span className="normal-rojo">"Transforma </span>
               <span className="normal-gris">tu </span>
               <span className="normal-rojo">bienestar </span>
-              <br />
               <span className="normal-gris">empieza hoy con </span>
               <br />
               <span className="grande-gris">Healthy</span>
@@ -245,7 +260,12 @@ export function Inicio() {
           <button>Enviar</button>
         </form>
         <div className="i5-sub-2">
-          <img src={form1} alt="img-sección-inicio-formulario" />
+
+          <img
+            className="form-img"
+            src={formImgs[currentIndex]}
+            alt="img-sección-inicio-formulario"
+          />
         </div>
 
       </section>
