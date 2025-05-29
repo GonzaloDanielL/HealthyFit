@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import isotipo from '/isotipo.png'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 
 import { Inicio } from './pages/inicio.jsx'
@@ -18,8 +18,9 @@ import { TbWorldWww } from "react-icons/tb";
 import { FaLocationDot } from "react-icons/fa6";
 
 function App() {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-
+  const [pagina, setPagina] = useState('link-navegacion');
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -28,7 +29,20 @@ function App() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+
   }, []);
+
+/*   useEffect(() => {
+    if (location.pathname === "/Inicio") {
+      setPagina('link-navegacion-active');
+    } else if (location.pathname === "/servicios") {
+      console.log("servicios")
+    } else if (location.pathname === "/blog") {
+      console.log("blog")
+    } else if (location.pathname === "/about") {
+      console.log("about")
+    }
+  }, [location]); */
 
   return (
     <>
@@ -40,17 +54,17 @@ function App() {
             <h1>Healthy</h1><h1>Fit</h1>
           </div>
           <div className='navegacion-links'>
-            <Link to="/Inicio">Inicio</Link>
-            <Link to="/servicios">Servicios</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/Inicio#contacto">Contacto</Link>
-            <Link to="/about">Sobre Nosotros</Link>
+            <Link className={location.pathname === "/Inicio" ? "link-navegacion-active" : "link-navegacion"} to="/Inicio">Inicio</Link>
+            <Link className={location.pathname === "/servicios" ? "link-navegacion-active" : "link-navegacion"} to="/servicios">Servicios</Link>
+            <Link className={location.pathname === "/blog" ? "link-navegacion-active" : "link-navegacion"} to="/blog">Blog</Link>
+            <Link className={location.pathname === "/Inicio#contacto" ? "link-navegacion-active" : "link-navegacion"} to="/Inicio#contacto">Contacto</Link>
+            <Link className={location.pathname === "/about" ? "link-navegacion-active" : "link-navegacion"} to="/about">Sobre Nosotros</Link>
           </div>
         </nav>
       </header>
       <main>
 
-        <Routes>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" exact element={<Inicio />} />
           <Route path="/Inicio" exact element={<Inicio />} />
           <Route path="/servicios" exact element={<Servicios />} />
@@ -94,7 +108,7 @@ function App() {
           <h3>Contacto</h3>
           <div>
             <a href="https://www.behance.net/ChaloLD" target="_blank"><FaPhoneAlt /> +51 987654321</a>
-            <a href="https://www.behance.net/ChaloLD" target="_blank"><MdEmail /> healthyfit@gmail.com</a> 
+            <a href="https://www.behance.net/ChaloLD" target="_blank"><MdEmail /> healthyfit@gmail.com</a>
             <a href="https://www.behance.net/ChaloLD" target="_blank"><TbWorldWww /> www.healthyfit.com</a>
             <a href="https://www.behance.net/ChaloLD" target="_blank"><FaLocationDot /> Av San luis II etapa Mz h Lt 5</a>
           </div>

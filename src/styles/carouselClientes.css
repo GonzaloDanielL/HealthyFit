@@ -1,11 +1,4 @@
-:root {
-  --var-color-principal: #f50800;
-  --var-color-secundario: #e7e7e7;
-  --var-fondo-principal: #111111;
-  --var-fondo-segundario: #222222;
-}
-  
-  /* Contenedor del carrusel */
+   /* Contenedor del carrusel */
   .carousel-container {
     position: relative;
     width: 100%;

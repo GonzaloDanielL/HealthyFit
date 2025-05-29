@@ -1,9 +1,10 @@
 :root {
-  --var-color-principal: #f50800;
-  --var-color-secundario: #e7e7e7;
+  --var-color-principal: #FF0000;
+  --var-color-principal-2: #AF0404;
+  --var-color-secundario: #eeeeee;
   --var-color-terciario: #a9a9a9;
-  --var-fondo-principal: #111111;
-  --var-fondo-segundario: #222222;
+  --var-fondo-principal: #171717;
+  --var-fondo-segundario: #252525;
 }
 
 body {
@@ -138,7 +139,7 @@ body {
     flex-direction: row;
     justify-content: flex-end;
 
-    & a {
+    & .link-navegacion {
       padding: 15px;
       padding-left: 20px;
       padding-right: 20px;
@@ -151,7 +152,20 @@ body {
       transition: all 0.3s ease-in-out;
     }
 
-    & a:hover {
+    & .link-navegacion-active {
+      padding: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-decoration: none;
+      color: var(--var-color-secundario);
+      font-size: 1.1rem;
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+    }
+
+    & link-navegacion:hover {
       color: var(--var-color-secundario);
     }
   }
@@ -178,6 +192,7 @@ main {
   & .sub-contenedor-principal {
     width: 100%;
     max-width: 2000px;
+
   }
 }
 
@@ -190,6 +205,8 @@ main {
     width: 100%;
     padding-left: 60px;
     padding-right: 60px;
+    max-width: 2000px;
+
 
     & .sub-seccion-inicio-cabezado {
       display: flex;
@@ -205,6 +222,7 @@ main {
     }
   }
 
+
   /*   & .sub-seccion-inicio:first-child {
     padding-top: 100px;
   } */
@@ -216,12 +234,10 @@ main {
   display: flex;
   flex-direction: row;
   /*     background: linear-gradient(149deg,rgba(0, 0, 0, 0) 0%, rgba(66, 47, 47, 0.27) 50%, rgba(209, 0, 0, 1) 100%); */
-  background: linear-gradient(
-    150deg,
-    rgba(17, 17, 17, 0) 0%,
-    rgba(0, 0, 0, 0.27) 37%,
-    rgba(133, 0, 0, 1) 100%
-  );
+  background: linear-gradient(150deg,
+      rgba(17, 17, 17, 0) 0%,
+      rgba(0, 0, 0, 0.27) 37%,
+      rgba(133, 0, 0, 1) 100%);
 
   & .i1-sub-1 {
     flex: 70%;
@@ -327,12 +343,14 @@ main {
   justify-content: center;
 
   & .i2-sub-2 {
-    padding-left: 5rem;
-    padding-right: 5rem;
+/*     padding-left: 5rem;
+    padding-right: 5rem; */
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem; /* Espacio uniforme entre tarjetas */
-    justify-content: center; /* Centra las tarjetas horizontalmente */
+    gap: 2rem;
+    /* Espacio uniforme entre tarjetas */
+    justify-content: center;
+    /* Centra las tarjetas horizontalmente */
 
     & div {
       border-radius: 10px;
@@ -344,7 +362,8 @@ main {
       background-color: var(--var-fondo-principal);
       padding: 20px;
 
-      flex: 1 1 300px; /* Se adaptan desde 300px hasta ocupar el espacio disponible */
+      flex: 1 1 300px;
+      /* Se adaptan desde 300px hasta ocupar el espacio disponible */
       max-width: 350px;
 
       & img {
@@ -1254,14 +1273,15 @@ main {
 }
 
 /* adaptación a monitores y laptops */
-@media (width >= 1900px) {
+@media (width >=1900px) {
   .sub-seccion-inicio {
     height: 900px;
   }
 
   .i1 {
-        padding-top: 150px;
+    padding-top: 150px;
     padding-bottom: 60px;
+
     .i1-sub-1 {
       justify-content: center;
 
@@ -1384,14 +1404,28 @@ main {
       }
     }
   }
+
+  .i5 {
+    flex-direction: row;
+
+    & .i5-sub-1 {
+      flex: 60%;
+    }
+
+    & .i5-sub-2 {
+      flex: 40%;
+    }
+  }
 }
 
 @media (max-width: 1125px) {
   .i1 {
     padding-top: 150px;
     padding-bottom: 60px;
+
     & .i1-sub-1 {
       flex: 60%;
+
       & div {
         & h2 {
           font-size: 3rem;
@@ -1475,6 +1509,20 @@ main {
         width: 220%;
         right: -180px;
       }
+    }
+  }
+
+  .i5 {
+    flex-direction: column;
+    
+    & .i5-sub-1 {
+      flex: 60%;
+      border-radius: 10px;
+    }
+
+    & .i5-sub-2 {
+      flex: 40%;
+      display: none;
     }
   }
 }
