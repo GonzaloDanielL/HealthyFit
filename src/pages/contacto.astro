@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/ui/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import { MapPin, Phone, Mail, Gift } from '@lucide/astro';
+
+import bgContacto from '../images/galeria/galeria-10.png';
 ---
 
 <BaseLayout title="Contacto" description="Contáctanos para más información sobre planes, clases o para agendar tu visita gratuita en HealthyFit.">
@@ -12,6 +14,7 @@ import { MapPin, Phone, Mail, Gift } from '@lucide/astro';
       subtitle="Hablemos"
       title="<span class='text-gradient-red'>Contáctanos</span>"
       description="¿Tienes preguntas? Estamos aquí para ayudarte. Tu primera semana es gratis."
+      bgImage={bgContacto}
     />
 
     <!-- SECCIÓN DE CONTACTO (Formulario e Información) -->

@@ -5,6 +5,8 @@ import PageHeader from '../components/ui/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import { Search } from '@lucide/astro';
 
+import bgGaleria from '../images/galeria/galeria-12.jpg';
+
 const imageModules = import.meta.glob<{ default: ImageMetadata }>('../images/galeria/*.{jpg,png}', { eager: true });
 const images = Object.keys(imageModules)
   .sort((a, b) => {
@@ -28,6 +30,7 @@ const mappedImages = images.map((img, i) => ({
       subtitle="Instalaciones"
       title="Nuestra <span class='text-gradient-red'>Galería</span>"
       description="Más de 1,000 m² de instalaciones de última generación, diseñadas para que tu entrenamiento sea perfecto."
+      bgImage={bgGaleria}
     />
 
     <!-- GALERIA DE INSTALACIONES (FILTROS Y GRILLA) -->
@@ -99,21 +102,17 @@ const mappedImages = images.map((img, i) => ({
     // 1. Lógica de Filtrado por Categorías
     // -------------------------------------------------------------------------
     filterBtns.forEach(btn => {
-      // Clonar botón para limpiar event listeners previos
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode?.replaceChild(newBtn, btn);
-
-      newBtn.addEventListener('click', () => {
+      btn.addEventListener('click', () => {
         // Actualizar estilos de los botones (Activo/Inactivo)
         document.querySelectorAll('.filter-btn').forEach(b => {
           b.classList.remove(...activeClasses);
           b.classList.add(...inactiveClasses);
         });
-        (newBtn as Element).classList.remove(...inactiveClasses);
-        (newBtn as Element).classList.add(...activeClasses);
+        btn.classList.remove(...inactiveClasses);
+        btn.classList.add(...activeClasses);
 
         // Filtrar las imágenes comparando el data-category
-        const filter = (newBtn as Element).getAttribute('data-filter');
+        const filter = btn.getAttribute('data-filter');
         galleryItems.forEach(item => {
           const el = item as HTMLElement;
           if (filter === 'Todos' || item.getAttribute('data-category') === filter) {
@@ -132,13 +131,10 @@ const mappedImages = images.map((img, i) => ({
     const modalImg = document.getElementById('modal-image') as HTMLImageElement;
     const modalClose = document.getElementById('modal-close');
 
-    // Clonar items para limpiar listeners antiguos (al recargar via transición)
+    // Configurar listeners para cada item de la galería
     galleryItems.forEach(item => {
-      const newItem = item.cloneNode(true);
-      item.parentNode?.replaceChild(newItem, item);
-
-      newItem.addEventListener('click', () => {
-        const img = (newItem as Element).querySelector('img');
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
         if (img && modal && modalImg) {
           modalImg.src = img.src;
           modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -166,16 +162,12 @@ const mappedImages = images.map((img, i) => ({
 
     // Configuración de cierre de modal
     if (modalClose) {
-      const newModalClose = modalClose.cloneNode(true);
-      modalClose.parentNode?.replaceChild(newModalClose, modalClose);
-      newModalClose.addEventListener('click', closeModal);
+      modalClose.addEventListener('click', closeModal);
     }
     
     if (modal) {
-      const newModal = modal.cloneNode(true);
-      modal.parentNode?.replaceChild(newModal, modal);
-      newModal.addEventListener('click', (e) => {
-        if (e.target === newModal) closeModal();
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
       });
     }
 

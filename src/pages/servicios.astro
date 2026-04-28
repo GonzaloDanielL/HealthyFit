@@ -5,6 +5,8 @@ import PageHeader from '../components/ui/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import ServiceCard from '../components/ui/ServiceCard.astro';
 import { services } from '../data/services';
+
+import bgServicios from '../images/galeria/galeria-5.jpg';
 ---
 
 <BaseLayout title="Servicios" description="Descubre todos los servicios de HealthyFit: musculación, cardio, clases grupales, box, funcional y nutrición.">
@@ -14,6 +16,7 @@ import { services } from '../data/services';
       subtitle="Lo que ofrecemos"
       title="Nuestros <span class='text-gradient-red'>Servicios</span>"
       description="Todo lo que necesitas para alcanzar tus metas fitness en un solo lugar, con equipamiento profesional e instructores de élite."
+      bgImage={bgServicios}
     />
 
     <!-- GRID DE SERVICIOS -->

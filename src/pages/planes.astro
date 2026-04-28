@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/ui/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
 import { plans } from '../data/plans';
+
+import bgPlanes from '../images/galeria/galeria-6.jpg';
 ---
 
 <BaseLayout title="Planes y Precios" description="Elige el plan de membresía que mejor se adapte a ti. Básico, Pro y Elite en HealthyFit.">
@@ -12,6 +14,7 @@ import { plans } from '../data/plans';
       subtitle="Membresías"
       title="Elige tu <span class='text-gradient-red'>Plan</span>"
       description="Sin contratos de permanencia. Cancela cuando quieras. Primera semana siempre gratis."
+      bgImage={bgPlanes}
     />
 
     <!-- TARJETAS DE PLANES -->
