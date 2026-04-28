@@ -1,6 +1,6 @@
-# HealthyFit Remastered 🏋️‍♀️✨
+# HealthyFit 🏋️‍♀️✨
 
-**HealthyFit Remastered** es la evolución de un proyecto personal que nació originalmente en React y ha sido refactorizado por completo utilizando **Astro**. La principal motivación detrás de esta migración fue construir una aplicación web más eficiente, enfocada en maximizar el rendimiento, mejorar drásticamente el SEO técnico y ofrecer una experiencia de usuario (UX) de primer nivel a través de una arquitectura web moderna y la generación de sitios estáticos (SSG).
+**HealthyFit (Remastered)** es la evolución de un proyecto personal que nació originalmente en React y ha sido refactorizado por completo utilizando **Astro**. La principal motivación detrás de esta migración fue construir una aplicación web más eficiente, enfocada en maximizar el rendimiento y ofrecer una experiencia de usuario (UX) de primer nivel a través de una arquitectura amigable y la generación de sitios estáticos (SSG).
 
 ## 📸 Vista Previa
 
@@ -11,7 +11,7 @@
 
 Esta nueva versión no solo cambia de stack tecnológico, sino que redefine la estructura del proyecto y su presentación visual, centrándose en métricas clave y usabilidad:
 
-- **Migración de React a Astro (Generación Estática):** Al reemplazar el renderizado de cliente (CSR) de React por la generación estática de Astro, eliminamos la sobrecarga de JavaScript en el navegador. Esto resulta en tiempos de interacción casi instantáneos y una indexación SEO muy superior al entregar HTML pre-renderizado directamente.
+- **Migración de React a Astro (Generación Estática):** Al reemplazar el renderizado de cliente (CSR) de React por la generación estática de Astro, eliminamos la sobrecarga de JavaScript en el navegador. Esto resulta en tiempos de interacción casi instantáneos.
 - **Implementación de Tailwind Animations:** Sustitución de librerías pesadas de animación basadas en JavaScript por animaciones nativas gestionadas íntegramente mediante CSS (`tailwind-animations`). Las transiciones y micro-interacciones ahora son fluidas, altamente eficientes y no bloquean el hilo principal (Main Thread).
 - **Optimización Integral de Imágenes:** Resolvimos los problemas de carga lenta y métricas LCP deficientes de la versión anterior mediante la implementación del componente nativo `<Image />` de Astro. Esto asegura el procesamiento y entrega en formatos de próxima generación (como WebP), optimización automática de dimensiones y carga diferida (lazy loading) por defecto.
 - **Arquitectura de la Información y CTAs:** Reestructuración completa del código en un sistema altamente modular (`/components/layout/`, `/sections/`, `/ui/`). Se mejoró la jerarquía de la información y se integraron botones de llamada a la acción (Call to Action) estratégicos para guiar al usuario, mejorando la retención y la tasa de conversión.
