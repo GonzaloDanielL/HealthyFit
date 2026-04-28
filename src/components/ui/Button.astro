@@ -1,0 +1,53 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'outline' | 'white' | 'dark-outline' | 'filter-active' | 'filter-inactive';
+  size?: 'sm' | 'md' | 'lg' | 'pill' | 'full';
+  class?: string;
+  id?: string;
+  [x: string]: any;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  id,
+  ...rest
+} = Astro.props;
+
+const baseClasses = "inline-flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer text-center no-underline";
+
+const sizeClasses = {
+  sm: "text-sm px-5 py-2.5 rounded-lg font-bold uppercase tracking-[0.02em]",
+  md: "text-sm px-8 py-3.5 rounded-lg font-bold uppercase tracking-[0.04em]",
+  lg: "text-base px-8 py-3.5 rounded-lg font-extrabold uppercase tracking-[0.03em]",
+  pill: "text-sm font-semibold py-2 px-5 rounded-full",
+  full: "w-full text-sm font-bold uppercase tracking-[0.04em] p-3.5 rounded-lg block",
+};
+
+const variantClasses = {
+  primary: "bg-red-600 text-white border border-red-600 hover:bg-red-700 hover:-translate-y-[1px] hover:shadow-[0_0_30px_rgba(229,26,26,0.35)] active:translate-y-0",
+  secondary: "bg-[#1a1a1a] text-white border border-[#2a2a2a] hover:border-red-600 hover:text-red-400 hover:bg-red-600/10 hover:-translate-y-1",
+  outline: "bg-transparent text-white border border-white/20 hover:border-red-500 hover:bg-white/5",
+  white: "bg-white text-red-600 border border-white hover:bg-white/90 hover:-translate-y-[1px] hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+  "dark-outline": "bg-transparent text-white border border-[#2a2a2a] hover:border-red-600 hover:text-red-400 hover:bg-red-600/10",
+  "filter-active": "bg-red-600 text-white border border-red-600",
+  "filter-inactive": "bg-[#1a1a1a] text-[#a1a1a1] border border-[#2a2a2a] hover:border-red-600/40 hover:text-white",
+};
+
+const finalClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim().replace(/\s+/g, ' ');
+---
+
+{href ? (
+  <a href={href} class={finalClasses} id={id} {...rest}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={finalClasses} id={id} {...rest}>
+    <slot />
+  </button>
+)}

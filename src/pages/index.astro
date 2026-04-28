@@ -1,0 +1,207 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Card from '../components/ui/Card.astro';
+import { services } from '../data/services';
+
+import carrusel1 from '../images/inicio/inicio-carrusel-1.png';
+import carrusel2 from '../images/inicio/inicio-carrusel-2.png';
+import carrusel3 from '../images/inicio/inicio-carrusel-3.png';
+
+const carouselImages = [
+  { src: carrusel1, alt: 'HealthyFit – instalaciones principales' },
+  { src: carrusel2, alt: 'HealthyFit – zona de entrenamiento' },
+  { src: carrusel3, alt: 'HealthyFit – clases grupales' },
+];
+---
+
+<BaseLayout
+  title="HealthyFit"
+  description="HealthyFit – El gimnasio que transforma tu cuerpo y tu mente. Musculación, cardio, clases grupales y más en el mejor gimnasio."
+>
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+
+    <!-- Carrusel de fondo -->
+    <div id="hero-carousel" class="absolute inset-0 z-0 animate-fade-in animate-duration-1000">
+      {carouselImages.map((img, i) => (
+        <Image
+          src={img.src}
+          alt={img.alt}
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+          class={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+          data-slide={i}
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+      ))}
+    </div>
+
+    <!-- Degradado izquierda → derecha sobre el carrusel -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
+
+    <!-- Contenido del hero -->
+    <div class="container-site relative z-20 pt-28 pb-16 max-w-2xl">
+
+
+      <!-- Título -->
+      <h1 class="font-display text-6xl md:text-7xl xl:text-8xl font-black leading-none tracking-tight text-white mb-6 animate-fade-in-up">
+        No Pares.<br/>
+        <span class="text-gradient-red">No Te Rindas.</span><br/>
+        No Hay Excusas.
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg animate-fade-in-up animate-delay-200">
+        HealthyFit es más que un gimnasio. Es tu comunidad, tu motivación y el lugar
+        donde los límites no existen. Únete a más de <strong class="text-white font-bold">2,000 miembros</strong> que ya transformaron su vida.
+      </p>
+
+      <!-- Botones -->
+      <div class="flex flex-wrap gap-4 mb-14 animate-fade-in-up animate-delay-300">
+        <Button href="/planes" size="md">
+          Empezar ahora →
+        </Button>
+        <Button href="/servicios" variant="outline" size="md">
+          Ver servicios
+        </Button>
+      </div>
+
+    </div>
+
+    <!-- Indicadores del carrusel -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2" aria-label="Slides">
+      {[0, 1, 2].map(i => (
+        <button
+          data-dot={i}
+          class={`carousel-dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-red-500 w-6' : 'bg-white/30'}`}
+          aria-label={`Slide ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 right-10 hidden md:flex flex-col items-center gap-2 text-white/30 text-[0.65rem] uppercase tracking-[0.15em] [writing-mode:vertical-rl]" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="w-px h-16 bg-gradient-to-b from-red-500 to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="bg-[#111111] border-y border-white/5" data-animate="animate-fade-in-up">
+    <div class="container-site py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        {[
+          { num: '2K+', lbl: 'Miembros activos',    icon: '👥' },
+          { num: '20+', lbl: 'Clases semanales',    icon: '🏋️' },
+          { num: '15',  lbl: 'Años de experiencia', icon: '🏆' },
+          { num: '98%', lbl: 'Satisfacción',        icon: '⭐' },
+        ].map((s, i) => (
+          <div class="flex flex-col items-center justify-center gap-1 py-4 px-6 text-center" data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+
+            <span class="font-display text-4xl font-black text-red-400 leading-none">{s.num}</span>
+            <span class="text-[0.7rem] text-white/40 uppercase tracking-widest mt-1">{s.lbl}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS HIGHLIGHT -->
+  <section class="py-32" data-animate="animate-fade-in-up">
+    <div class="container-site">
+
+      <!-- Header -->
+      <SectionHeader
+        subtitle="Qué ofrecemos"
+        title="Todo lo que necesitas<br/>en un solo lugar"
+        description="Equipamiento de última generación, instructores certificados y un ambiente que te impulsa a superar tus metas cada día."
+        align="center"
+      />
+
+      <!-- Grid de servicios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s, i) => (
+          <div data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+            <Card
+              image={s.image}
+              title={s.title}
+              description={s.description}
+              href={`/servicios#${s.id}`}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="bg-gradient-to-r from-red-800 to-red-600 py-16 mt-8" data-animate="animate-fade-in-up">
+    <div class="container-site flex flex-wrap items-center justify-between gap-6">
+      <div>
+        <h2 class="font-display text-4xl font-black text-white mb-2">¿Listo para el cambio?</h2>
+        <p class="text-white/80">Primera semana gratis, sin compromiso. Ven y pruébalo.</p>
+      </div>
+      <Button href="/contacto" variant="white" size="md" class="flex-shrink-0">
+        Agenda tu visita gratuita →
+      </Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Mapea --font-display (Zalando Sans) porque Tailwind no resuelve variables CSS por nombre */
+  .font-display { font-family: var(--font-display); }
+</style>
+
+
+
+<script>
+  // Variable para almacenar el ID del temporizador y poder limpiarlo al navegar
+  let timer: ReturnType<typeof setInterval>;
+
+  document.addEventListener('astro:page-load', () => {
+    // -------------------------------------------------------------------------
+    // Configuración del Carrusel del Hero
+    // -------------------------------------------------------------------------
+    const slides = document.querySelectorAll<HTMLImageElement>('[data-slide]');
+    const dots   = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
+    
+    if (slides.length === 0 || dots.length === 0) return; // Si no estamos en el index, ignorar
+
+    let current = 0;
+
+    /**
+     * Cambia la imagen activa del carrusel y actualiza los indicadores (puntos).
+     * @param index - Índice de la nueva diapositiva a mostrar
+     */
+    function goTo(index: number) {
+      slides[current].classList.replace('opacity-100', 'opacity-0');
+      dots[current].classList.remove('bg-red-500', 'w-6');
+      dots[current].classList.add('bg-white/30', 'w-2');
+
+      current = index;
+
+      slides[current].classList.replace('opacity-0', 'opacity-100');
+      dots[current].classList.remove('bg-white/30', 'w-2');
+      dots[current].classList.add('bg-red-500', 'w-6');
+    }
+
+    // Limpiar timer previo para evitar duplicados al navegar
+    if (timer) clearInterval(timer);
+    
+    // Autoplay cada 5 segundos
+    timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+
+    // Click en los dots
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer);
+        goTo(i);
+        timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+      });
+    });
+  });
+</script>

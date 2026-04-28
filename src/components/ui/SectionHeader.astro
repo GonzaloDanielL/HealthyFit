@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  align?: 'left' | 'center' | 'right';
+  class?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  description, 
+  align = 'center', 
+  class: className = '' 
+} = Astro.props;
+
+const alignmentClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
+
+const lineAlignmentClasses = {
+  left: 'mr-auto',
+  center: 'mx-auto',
+  right: 'ml-auto',
+};
+
+const descAlignmentClasses = {
+  left: 'mr-auto',
+  center: 'mx-auto',
+  right: 'ml-auto',
+};
+---
+
+<div class={`${alignmentClasses[align]} mb-20 ${className}`}>
+  <div class={`w-14 h-0.5 bg-red-500 rounded mb-4 ${lineAlignmentClasses[align]}`}></div>
+  
+  {subtitle && (
+    <span class="block text-xs font-bold uppercase tracking-[0.14em] text-red-400 mb-3">
+      {subtitle}
+    </span>
+  )}
+  
+  <h2 class="font-display text-4xl md:text-5xl font-extrabold text-white mb-4" set:html={title} />
+  
+  {description && (
+    <p class={`text-[#a1a1a1] text-lg leading-relaxed max-w-xl ${descAlignmentClasses[align]}`}>
+      {description}
+    </p>
+  )}
+</div>

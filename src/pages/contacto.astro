@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+import { MapPin, Phone, Mail, Gift } from '@lucide/astro';
+---
+
+<BaseLayout title="Contacto" description="Contáctanos para más información sobre planes, clases o para agendar tu visita gratuita en HealthyFit.">
+  <div class="pt-[4.5rem]">
+
+    <PageHeader
+      subtitle="Hablemos"
+      title="<span class='text-gradient-red'>Contáctanos</span>"
+      description="¿Tienes preguntas? Estamos aquí para ayudarte. Tu primera semana es gratis."
+    />
+
+    <!-- SECCIÓN DE CONTACTO (Formulario e Información) -->
+    <section class="section-padding" data-animate="animate-fade-in-up">
+      <div class="container-site grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16 items-start">
+
+        <!-- Form -->
+        <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 sm:p-10">
+          <h2 class="font-display text-2xl font-extrabold text-white mb-8">Envíanos un mensaje</h2>
+          <form class="flex flex-col gap-5" id="contact-form" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-2">
+                <label for="name" class="text-xs font-bold uppercase tracking-[0.06em] text-[#a1a1a1]">Nombre *</label>
+                <input type="text" id="name" name="name" class="bg-[#111111] border border-[#2a2a2a] rounded-lg text-white text-sm px-4 py-3 outline-none transition-all duration-200 focus:border-red-600 focus:ring-4 focus:ring-red-600/15 placeholder:text-[#6b6b6b]" placeholder="Tu nombre completo" required />
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="email" class="text-xs font-bold uppercase tracking-[0.06em] text-[#a1a1a1]">Email *</label>
+                <input type="email" id="email" name="email" class="bg-[#111111] border border-[#2a2a2a] rounded-lg text-white text-sm px-4 py-3 outline-none transition-all duration-200 focus:border-red-600 focus:ring-4 focus:ring-red-600/15 placeholder:text-[#6b6b6b]" placeholder="tu@email.com" required />
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="phone" class="text-xs font-bold uppercase tracking-[0.06em] text-[#a1a1a1]">Teléfono</label>
+              <input type="tel" id="phone" name="phone" class="bg-[#111111] border border-[#2a2a2a] rounded-lg text-white text-sm px-4 py-3 outline-none transition-all duration-200 focus:border-red-600 focus:ring-4 focus:ring-red-600/15 placeholder:text-[#6b6b6b]" placeholder="+1 234 567 890" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="subject" class="text-xs font-bold uppercase tracking-[0.06em] text-[#a1a1a1]">Asunto *</label>
+              <select id="subject" name="subject" class="bg-[#111111] border border-[#2a2a2a] rounded-lg text-white text-sm px-4 py-3 outline-none transition-all duration-200 focus:border-red-600 focus:ring-4 focus:ring-red-600/15 appearance-none cursor-pointer" required>
+                <option value="" disabled selected>Selecciona un tema</option>
+                <option value="planes">Información sobre planes</option>
+                <option value="visita">Agendar visita gratuita</option>
+                <option value="clases">Clases grupales</option>
+                <option value="nutricion">Nutrición y entrenamiento personal</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="message" class="text-xs font-bold uppercase tracking-[0.06em] text-[#a1a1a1]">Mensaje *</label>
+              <textarea id="message" name="message" class="bg-[#111111] border border-[#2a2a2a] rounded-lg text-white text-sm px-4 py-3 outline-none transition-all duration-200 focus:border-red-600 focus:ring-4 focus:ring-red-600/15 placeholder:text-[#6b6b6b] resize-y min-h-[120px]" rows="5" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+            </div>
+            <Button type="submit" id="submit-btn" class="mt-2 w-full">
+              Enviar mensaje →
+            </Button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h2 class="font-display text-2xl font-extrabold text-white mb-7">Información de contacto</h2>
+          <div class="flex flex-col gap-5 mb-8">
+            {[
+              { icon: MapPin, label: 'Dirección', text: 'Av. Principal 1234, Ciudad, País' },
+              { icon: Phone, label: 'Teléfono', text: '+1 (800) 123-4567' },
+              { icon: Mail, label: 'Email', text: 'info@healthyfit.com' },
+            ].map(item => (
+              <div class="flex items-start gap-4">
+                <item.icon class="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
+                <div>
+                  <span class="block text-xs font-bold uppercase tracking-[0.08em] text-red-400 mb-1">{item.label}</span>
+                  <span class="block text-sm text-[#a1a1a1]">{item.text}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6 mb-5">
+            <h3 class="font-display text-base font-bold uppercase tracking-[0.08em] text-white mb-4">Horarios</h3>
+            <div class="flex flex-col gap-2.5">
+              {[
+                { day: 'Lun – Vie', hours: '6:00 – 23:00' },
+                { day: 'Sábado',   hours: '7:00 – 21:00' },
+                { day: 'Domingo',  hours: '8:00 – 18:00' },
+              ].map(s => (
+                <div class="flex justify-between text-sm">
+                  <span class="text-[#a1a1a1]">{s.day}</span>
+                  <span class="text-white font-semibold">{s.hours}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex gap-4 bg-red-600/10 border border-red-600/30 rounded-xl p-5">
+            <Gift class="w-8 h-8 text-red-500 shrink-0" />
+            <div>
+              <strong class="block font-bold text-red-400 mb-1">Primera semana GRATIS</strong>
+              <p class="text-sm text-[#a1a1a1] leading-[1.5]">Ven a conocernos sin compromiso y empieza tu transformación hoy.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // -------------------------------------------------------------------------
+    // Lógica del Formulario de Contacto
+    // -------------------------------------------------------------------------
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    // Simulación de envío del formulario
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Estado de éxito temporal
+      submitBtn.textContent = '✓ Mensaje enviado';
+      submitBtn.style.background = '#16a34a'; // Verde éxito
+      submitBtn.disabled = true;
+      
+      // Restaurar el botón después de 4 segundos
+      setTimeout(() => {
+        submitBtn.textContent = 'Enviar mensaje →';
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        form.reset();
+      }, 4000);
+    });
+  });
+</script>

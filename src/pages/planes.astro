@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+import { plans } from '../data/plans';
+---
+
+<BaseLayout title="Planes y Precios" description="Elige el plan de membresía que mejor se adapte a ti. Básico, Pro y Elite en HealthyFit.">
+  <div class="pt-[4.5rem]">
+
+    <PageHeader
+      subtitle="Membresías"
+      title="Elige tu <span class='text-gradient-red'>Plan</span>"
+      description="Sin contratos de permanencia. Cancela cuando quieras. Primera semana siempre gratis."
+    />
+
+    <!-- TARJETAS DE PLANES -->
+    <section class="section-padding" data-animate="animate-fade-in-up">
+      <div class="container-site">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start mb-12 max-w-sm md:max-w-none mx-auto">
+          {plans.map((plan, i) => (
+            <div class={`relative rounded-xl p-10 flex flex-col gap-6 transition-all duration-200 border ${
+              plan.highlighted 
+                ? 'border-red-600 bg-gradient-to-br from-red-600/10 to-[#1a1a1a] shadow-[0_0_40px_rgba(229,26,26,0.2)] hover:-translate-y-1' 
+                : 'bg-[#1a1a1a] border-[#2a2a2a] hover:border-red-600/30 hover:-translate-y-1'
+            }`} data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+              
+              {plan.highlighted && (
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-[0.06em] whitespace-nowrap">
+                  ⭐ Más popular
+                </div>
+              )}
+              
+              <div>
+                <h2 class="font-display text-2xl font-extrabold text-white mb-3">{plan.name}</h2>
+                <div class="flex items-baseline gap-1 mb-3">
+                  <span class="text-2xl font-bold text-red-400">$</span>
+                  <span class="font-display text-5xl md:text-6xl font-black text-white leading-none">{plan.price}</span>
+                  <span class="text-sm text-[#6b6b6b]">/ {plan.period}</span>
+                </div>
+                <p class="text-sm text-[#a1a1a1] leading-[1.6]">{plan.description}</p>
+              </div>
+              
+              <ul class="flex flex-col gap-3 flex-1 list-none">
+                {plan.features.map(f => (
+                  <li class="flex items-start gap-3 text-sm text-[#a1a1a1]">
+                    <span class="text-red-400 font-extrabold shrink-0 mt-0.5" aria-hidden="true">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              
+              <Button href="/contacto" variant={plan.highlighted ? 'primary' : 'dark-outline'} size="full">
+                {plan.cta}
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col gap-2 text-center mt-12">
+          <p class="text-sm text-[#6b6b6b]">💳 Aceptamos tarjeta de crédito, débito y transferencia bancaria.</p>
+          <p class="text-sm text-[#6b6b6b]">🔄 Puedes cambiar de plan en cualquier momento sin penalización.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="bg-[#111111] border-t border-[#2a2a2a] py-24" data-animate="animate-fade-in-up">
+      <div class="container-site">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-extrabold text-white mb-10 text-center sm:text-left">Preguntas frecuentes</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {[
+            { q: '¿Hay un contrato de permanencia?', a: 'No. Nuestros planes son mes a mes. Puedes cancelar en cualquier momento sin penalización.' },
+            { q: '¿Cómo funciona la semana gratis?', a: 'Cualquier persona nueva puede usar el gimnasio durante 7 días sin coste alguno. Solo necesitas registrarte.' },
+            { q: '¿Puedo congelar mi membresía?', a: 'Sí. Puedes congelar tu membresía hasta 2 meses al año por razones de salud o viaje.' },
+            { q: '¿Las clases grupales tienen coste extra?', a: 'En los planes Pro y Elite las clases están incluidas. En Básico tienen un coste adicional de $5/clase.' },
+          ].map((faq, i) => (
+            <div class="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-6" data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+              <h3 class="font-display text-lg font-bold text-white mb-3">{faq.q}</h3>
+              <p class="text-sm text-[#a1a1a1] leading-[1.7]">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

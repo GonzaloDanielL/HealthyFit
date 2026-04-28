@@ -1,0 +1,190 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+import { Search } from '@lucide/astro';
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>('../images/galeria/*.{jpg,png}', { eager: true });
+const images = Object.keys(imageModules)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/galeria-(\d+)/)?.[1] || "0");
+    const numB = parseInt(b.match(/galeria-(\d+)/)?.[1] || "0");
+    return numA - numB;
+  })
+  .map(key => imageModules[key].default);
+
+const categories = ['Musculación', 'Cardio', 'Clases', 'Funcional', 'Vestuarios'];
+const mappedImages = images.map((img, i) => ({
+  src: img,
+  category: categories[i % categories.length]
+}));
+---
+
+<BaseLayout title="Galería" description="Conoce las instalaciones de HealthyFit. Galería de fotos del gimnasio.">
+  <div class="pt-[4.5rem]">
+
+    <PageHeader
+      subtitle="Instalaciones"
+      title="Nuestra <span class='text-gradient-red'>Galería</span>"
+      description="Más de 1,000 m² de instalaciones de última generación, diseñadas para que tu entrenamiento sea perfecto."
+    />
+
+    <!-- GALERIA DE INSTALACIONES (FILTROS Y GRILLA) -->
+    <section class="section-padding" data-animate="animate-fade-in-up">
+      <div class="container-site">
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-2 mb-10">
+          {['Todos', 'Musculación', 'Cardio', 'Clases', 'Funcional', 'Vestuarios'].map((f, i) => (
+            <Button 
+              variant={i === 0 ? 'filter-active' : 'filter-inactive'} 
+              size="pill"
+              class="filter-btn"
+              data-filter={f}
+            >
+              {f}
+            </Button>
+          ))}
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[220px] gap-4" id="gallery-grid">
+          {mappedImages.map((item, i) => (
+            <div 
+              class={`gallery-item group relative bg-[#1a1a1a] border border-[#2a2a2a] rounded-[0.625rem] overflow-hidden cursor-pointer transition-transform duration-200 hover:scale-[1.02] ${
+                i === 0 ? 'sm:col-span-2 md:col-span-2' : ''
+              } ${
+                i === 5 ? 'md:row-span-2' : ''
+              }`}
+              data-category={item.category}
+              data-animate={`animate-fade-in-up animate-delay-${(i % 4 + 1) * 100}`}
+            >
+              <Image 
+                src={item.src} 
+                alt={`Galería HealthyFit - ${item.category}`} 
+                class="w-full h-full object-cover gallery-img"
+                loading="lazy" 
+              />
+              <div class="absolute inset-0 bg-red-600/70 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <Search class="w-10 h-10 text-white" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+      <button id="modal-close" class="absolute top-6 right-6 text-white/70 hover:text-red-500 text-5xl leading-none transition-colors" aria-label="Cerrar modal">&times;</button>
+      <img id="modal-image" src="" alt="Vista completa" class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" />
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // -------------------------------------------------------------------------
+    // Variables de Galería
+    // -------------------------------------------------------------------------
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const activeClasses = "bg-red-600 text-white border-red-600".split(' ');
+    const inactiveClasses = "bg-[#1a1a1a] text-[#a1a1a1] border-[#2a2a2a] hover:border-red-600/40 hover:text-white".split(' ');
+
+    // -------------------------------------------------------------------------
+    // 1. Lógica de Filtrado por Categorías
+    // -------------------------------------------------------------------------
+    filterBtns.forEach(btn => {
+      // Clonar botón para limpiar event listeners previos
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode?.replaceChild(newBtn, btn);
+
+      newBtn.addEventListener('click', () => {
+        // Actualizar estilos de los botones (Activo/Inactivo)
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove(...activeClasses);
+          b.classList.add(...inactiveClasses);
+        });
+        (newBtn as Element).classList.remove(...inactiveClasses);
+        (newBtn as Element).classList.add(...activeClasses);
+
+        // Filtrar las imágenes comparando el data-category
+        const filter = (newBtn as Element).getAttribute('data-filter');
+        galleryItems.forEach(item => {
+          const el = item as HTMLElement;
+          if (filter === 'Todos' || item.getAttribute('data-category') === filter) {
+            el.style.display = '';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // -------------------------------------------------------------------------
+    // 2. Lógica del Modal de Pantalla Completa
+    // -------------------------------------------------------------------------
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image') as HTMLImageElement;
+    const modalClose = document.getElementById('modal-close');
+
+    // Clonar items para limpiar listeners antiguos (al recargar via transición)
+    galleryItems.forEach(item => {
+      const newItem = item.cloneNode(true);
+      item.parentNode?.replaceChild(newItem, item);
+
+      newItem.addEventListener('click', () => {
+        const img = (newItem as Element).querySelector('img');
+        if (img && modal && modalImg) {
+          modalImg.src = img.src;
+          modal.classList.remove('opacity-0', 'pointer-events-none');
+          modalImg.classList.remove('scale-95');
+          modalImg.classList.add('scale-100');
+          // Bloquear scroll
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    /**
+     * Cierra el modal y restablece el scroll del body
+     */
+    function closeModal() {
+      if (modal && modalImg) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modalImg.classList.remove('scale-100');
+        modalImg.classList.add('scale-95');
+        // Restaurar scroll
+        document.body.style.overflow = '';
+        setTimeout(() => { modalImg.src = ''; }, 300);
+      }
+    }
+
+    // Configuración de cierre de modal
+    if (modalClose) {
+      const newModalClose = modalClose.cloneNode(true);
+      modalClose.parentNode?.replaceChild(newModalClose, modalClose);
+      newModalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modal) {
+      const newModal = modal.cloneNode(true);
+      modal.parentNode?.replaceChild(newModal, modal);
+      newModal.addEventListener('click', (e) => {
+        if (e.target === newModal) closeModal();
+      });
+    }
+
+    // Listener global para la tecla Escape
+    // Se limpia antes para evitar acumular múltiples listeners
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    document.removeEventListener('keydown', handleKeydown);
+    document.addEventListener('keydown', handleKeydown);
+  });
+</script>

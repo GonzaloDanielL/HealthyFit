@@ -1,0 +1,53 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/ui/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+import ServiceCard from '../components/ui/ServiceCard.astro';
+import { services } from '../data/services';
+---
+
+<BaseLayout title="Servicios" description="Descubre todos los servicios de HealthyFit: musculación, cardio, clases grupales, box, funcional y nutrición.">
+  <div class="pt-[4.5rem]">
+
+    <PageHeader
+      subtitle="Lo que ofrecemos"
+      title="Nuestros <span class='text-gradient-red'>Servicios</span>"
+      description="Todo lo que necesitas para alcanzar tus metas fitness en un solo lugar, con equipamiento profesional e instructores de élite."
+    />
+
+    <!-- GRID DE SERVICIOS -->
+    <section class="py-32" data-animate="animate-fade-in-up">
+      <div class="container-site">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, i) => (
+            <div data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+              <ServiceCard
+                id={service.id}
+                image={service.image}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="bg-gradient-to-br from-red-800 to-red-600 py-16 mt-8" data-animate="animate-fade-in-up">
+      <div class="container-site flex flex-wrap items-center justify-between gap-8 text-center md:text-left">
+        <div>
+          <h2 class="font-display text-3xl sm:text-4xl font-black text-white mb-2">¿No sabes por dónde empezar?</h2>
+          <p class="text-white/80 text-lg">Habla con nuestros entrenadores y diseñamos tu plan ideal.</p>
+        </div>
+        <Button href="/contacto" variant="white" size="lg" class="w-full md:w-auto shrink-0">
+          Contáctanos →
+        </Button>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

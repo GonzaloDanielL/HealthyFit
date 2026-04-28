@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import { Dumbbell, Activity, Users, Flame, Zap, Salad } from '@lucide/astro';
+
+const iconMap = {
+  Dumbbell, Activity, Users, Flame, Zap, Salad
+};
+
+interface Props {
+  id?: string;
+  image: any;
+  icon: keyof typeof iconMap;
+  title: string;
+  description: string;
+  features: string[];
+}
+
+const { id, image, icon, title, description, features } = Astro.props;
+const IconComponent = iconMap[icon];
+---
+
+<article class="group bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden flex flex-col transition-all duration-200 hover:border-red-500/50 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]" id={id}>
+  
+  <!-- Imagen superior -->
+  <div class="w-full aspect-[3/2] overflow-hidden">
+    <Image
+      src={image}
+      alt={title}
+      width={600}
+      height={400}
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-8 flex flex-col flex-1">
+    <div class="flex items-center gap-4 mb-4">
+      <IconComponent class="w-8 h-8 text-red-500 shrink-0" />
+      <h2 class="font-display text-[1.4rem] font-extrabold text-white">{title}</h2>
+    </div>
+    <p class="text-sm text-[#a1a1a1] leading-[1.7] mb-6 flex-1">{description}</p>
+    
+    <ul class="flex flex-col gap-2.5 list-none">
+      {features.map(f => (
+        <li class="flex items-start gap-3 text-sm text-[#a1a1a1]">
+          <span class="text-red-400 font-bold shrink-0 mt-0.5" aria-hidden="true">✓</span>
+          {f}
+        </li>
+      ))}
+    </ul>
+  </div>
+</article>

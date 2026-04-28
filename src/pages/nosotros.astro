@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import PageHeader from "../components/ui/PageHeader.astro";
+import { team } from "../data/team";
+import { Target, Eye, Heart } from '@lucide/astro';
+
+import nosotrosImg from "../images/nosotros/nosotros.jpg";
+---
+
+<BaseLayout
+  title="Nosotros"
+  description="Conoce el equipo de HealthyFit. Instructores certificados y apasionados por el fitness."
+>
+  <div class="pt-[4.5rem]">
+    <PageHeader
+      subtitle="Quiénes somos"
+      title="El equipo detrás de<br /><span class='text-gradient-red'>HealthyFit</span>"
+      description="Más de 15 años formando atletas y transformando vidas. Somos un equipo apasionado por el deporte y el bienestar de cada uno de nuestros miembros."
+    />
+
+    <!-- HISTORIA Y VALORES -->
+    <section class="py-24 pt-32" data-animate="animate-fade-in-up">
+      <div
+        class="container-site grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-16 items-start"
+      >
+        <div>
+          <SectionHeader
+            subtitle="Nuestra historia"
+            title="Nació de una pasión,<br/>creció con esfuerzo"
+            align="left"
+            class="!mb-5"
+          />
+          <p class="text-[#a1a1a1] leading-[1.8] mb-4">
+            HealthyFit comenzó en 2009 como un pequeño local con apenas 200 m² y
+            una idea clara: crear un espacio donde cualquier persona pudiera
+            mejorar su condición física.
+          </p>
+          <p class="text-[#a1a1a1] leading-[1.8] mb-4">
+            Hoy somos el gimnasio de referencia de la ciudad, con más de 2,000
+            miembros activos, un equipo de 15 profesionales y unas instalaciones
+            de vanguardia.
+          </p>
+          <div class="mt-8 flex flex-col gap-5">
+            {
+              [
+                {
+                  icon: Target,
+                  label: "Misión",
+                  text: "Hacer del fitness accesible y transformador para todos.",
+                },
+                {
+                  icon: Eye,
+                  label: "Visión",
+                  text: "Ser el referente de bienestar en la región.",
+                },
+                {
+                  icon: Heart,
+                  label: "Valores",
+                  text: "Disciplina, comunidad, respeto y mejora continua.",
+                },
+              ].map((v) => (
+                <div class="flex gap-4">
+                  <v.icon class="w-7 h-7 text-red-500 shrink-0" />
+                  <div>
+                    <strong class="block text-[0.8rem] font-bold uppercase tracking-[0.06em] text-red-400 mb-1">
+                      {v.label}
+                    </strong>
+                    <p class="text-sm text-[#a1a1a1] leading-relaxed">
+                      {v.text}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div
+          class="rounded-xl overflow-hidden h-full shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          data-animate="animate-fade-in-up animate-delay-200"
+        >
+          <Image
+            src={nosotrosImg}
+            alt="Instalaciones de HealthyFit"
+            width={600}
+            height={800}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO DE INSTRUCTORES -->
+    <section class="py-24" data-animate="animate-fade-in-up">
+      <div class="container-site">
+        <SectionHeader
+          subtitle="El equipo"
+          title="Nuestros instructores"
+          align="center"
+        />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {
+            team.map((member, i) => (
+              <div class="flex bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl overflow-hidden transition-all duration-200 hover:border-red-500/40 hover:-translate-y-1" data-animate={`animate-fade-in-up animate-delay-${(i + 1) * 100}`}>
+                <div class="w-32 sm:w-40 shrink-0 border-r border-[#2a2a2a] relative">
+                  {member.image ? (
+                    <Image
+                      src={member.image as any}
+                      alt={member.name}
+                      width={200}
+                      height={300}
+                      class="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-red-700 to-red-400 grid place-items-center">
+                      <span class="font-display text-3xl font-black text-white">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-center">
+                  <h3 class="font-display text-[1.15rem] font-bold text-white mb-1">
+                    {member.name}
+                  </h3>
+                  <span class="block text-xs font-semibold uppercase tracking-[0.06em] text-red-400 mb-3">
+                    {member.role}
+                  </span>
+                  <p class="text-sm text-[#a1a1a1] leading-[1.6] mb-3.5">
+                    {member.bio}
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    {member.specialties.map((s) => (
+                      <span class="bg-red-600/10 border border-red-600/25 text-red-400 text-[0.7rem] font-semibold py-1 px-2.5 rounded-full uppercase tracking-[0.04em]">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

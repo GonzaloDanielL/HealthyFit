@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+@import 'tailwind-animations';
+
+/* ─── HealthyFit Design Tokens ─────────────────────────────────────────── */
+@theme {
+  /* Brand Colors */
+  --color-primary:        #e51a1a;   /* Rojo principal */
+  --color-primary-dark:   #b91212;   /* Rojo oscuro (hover) */
+  --color-primary-light:  #ff4444;   /* Rojo claro (glow) */
+
+  /* Neutral Dark Palette */
+  --color-dark:           #0a0a0a;   /* Fondo más oscuro */
+  --color-dark-surface:   #111111;   /* Cards / superficies */
+  --color-dark-elevated:  #1a1a1a;   /* Tarjetas elevadas */
+  --color-dark-border:    #2a2a2a;   /* Bordes */
+  --color-dark-muted:     #3a3a3a;   /* Elementos sutiles */
+
+  /* Text */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #a1a1a1;
+  --color-text-muted:     #6b6b6b;
+
+  /* Typography */
+  --font-sans: 'Karla', system-ui, sans-serif;
+  --font-display: 'Zalando Sans', system-ui, sans-serif;
+
+  /* Spacing */
+  --spacing-section: 6rem;
+
+  /* Border Radius */
+  --radius-card: 0.75rem;
+
+  /* Shadows */
+  --shadow-red-glow: 0 0 30px rgba(229, 26, 26, 0.35);
+  --shadow-card:     0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-dark);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-dark);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────────────── */
+@layer utilities {
+  .text-gradient-red {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-red {
+    box-shadow: var(--shadow-red-glow);
+  }
+
+  .section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .container-site {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .card-dark {
+    background-color: var(--color-dark-elevated);
+    border: 1px solid var(--color-dark-border);
+    border-radius: var(--radius-card);
+  }
+
+  .divider-red {
+    width: 3.5rem;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+  }
+}
